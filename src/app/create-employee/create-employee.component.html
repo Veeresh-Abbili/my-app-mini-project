@@ -1,0 +1,64 @@
+<h3>Update an Employee Record</h3>
+<form [formGroup]="employeeForm">
+    <label>Name</label>
+    <input type="text" formControlName="name"><br>
+    <label>Company</label>
+    <input type="text" formControlName="company"><br>
+    <label>Role</label>
+    <input type="text" formControlName="role"><br>
+    <label>Package</label>
+    <input type="number" formControlName="package"><br>
+    <label>Email</label>
+    <input type="email" formControlName="email"><br>
+    <label>D O B</label>
+    <input type="month" formControlName="dob"><br><br>
+ 
+    <label><ins>Address:</ins></label>
+ <div formGroupName="Address">
+    <label>Line 1</label>
+    <input type="text" formControlName="addressLine"><br>
+    <label>City</label>
+    <input type="text" formControlName="city"><br>
+    <label>State</label>
+    <input type="text" formControlName="state"><br>
+    <label>Pincode</label>
+    <input type="number" formControlName="pincode">
+ </div><br>
+    <label>Gender:</label>
+    <input type="radio" name="gender" formControlName="gender" value="Male">
+    <label>Male</label>
+    <input type="radio" name="gender" formControlName="gender" value="Female">
+    <label>Female</label><br>
+    
+    <label>WorkMode:</label>
+    <input type="radio" name="workMode" formControlName="workMode" value="WFH">
+    <label>WFH</label>
+    <input type="radio" name="workMode" formControlName="workMode"  value="WFO">
+    <label>WFO</label><br>
+
+  <div *ngIf="employeeForm.get('workMode')?.value=='WFH'" >
+    <label>wifibill</label>
+    <input type="number" formControlName="WFH">
+  </div>
+  <div *ngIf="employeeForm.get('workMode')?.value=='WFO'">
+    <label>travelfee</label>
+    <input type="number" formControlName="WFO">
+  </div>
+
+  <label>Hikes</label>
+ <button (click)="addhike()" class="btn btn-warning">Add Hike</button>
+<div formArrayName="hikes">
+<div *ngFor="let hike of HikesFormArray.controls;let i=index">
+<div formGroupName="{{i}}">
+    <h2>Hike{{i+1}}</h2>
+   <label>Year</label>
+   <input type="number" formControlName="year"><br>
+   <label>Hike(%)</label>
+   <input type="number" formControlName="hike(%)"><br>
+   <button (click)="deletehike(i)" class="btn btn-danger">Remove Hike</button>
+</div>
+</div>
+</div>
+<button (click)="submit()">Submit</button><br>
+
+</form>

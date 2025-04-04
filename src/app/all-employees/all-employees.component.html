@@ -1,0 +1,85 @@
+<p>all-employees works!</p>
+<input type="text" [(ngModel)]="term" (keyup)="filter()" placeholder="Enter the value to search">
+
+<select [(ngModel)]="column">
+    <option>S No</option>
+    <option>name</option>
+    <option>gender</option>
+    <option>company</option>
+    <option>id</option>
+    <option>role</option>
+    <option>package</option>
+    <option>email</option>
+    <option>dob</option>
+    <option>address</option>
+    <option>hikes</option>
+    <option>workMode</option>
+</select>
+<select [(ngModel)]="order">
+    <option>asc</option>
+    <option>desc</option>
+</select>
+<button (click)="sort()">Sort</button>
+
+<select [(ngModel)]="limit">
+    <option>5</option>
+    <option>10</option>
+    <option>15</option>
+    <option>20</option>
+    <option>25</option>
+</select>
+<select [(ngModel)]="page">
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+    <option>5</option>
+</select>
+<button (click)="pagination()">Pagination</button>
+
+<table class="table table-dark" border="1" [cellSpacing]="0" [cellPadding]="10">
+    <thead>
+    <tr><th>S No</th>
+        <th>name</th>
+        <th>gender</th>
+        <th>company</th>
+        <th>id</th>
+        <th>role</th>
+        <th>package</th>
+        <th>email</th>
+        <th>dob</th>
+        <th>address</th>
+        <th>hikes</th>
+        <th>workMode</th>
+        <th>view</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+</thead>
+<tbody>
+    <tr *ngFor="let employee of allemployees; let i=index">
+        <td>{{i+1}}</td>
+        <td>{{employee.name}}</td>
+        <td>{{employee.gender}}</td>
+        <td>{{employee.company}}</td>
+        <td>{{employee.id}}</td>
+        <td>{{employee.role}}</td>
+        <td>{{employee.package}}</td>
+        <td>{{employee.email}}</td>
+        <td>{{employee.dob}}</td>
+        <td>{{employee.address}}</td>
+        <td>{{employee.hikes}}</td>
+        <td>{{employee.workMode}}</td>
+        <td>
+            <button routerLink="/mini-project/employee-details/{{employee.id}}" class="btn btn-primary">View</button>
+        </td>
+        <td>
+            <button routerLink="/mini-project/create-employee/{{employee.id}}" class="btn btn-info">Edit</button>
+        </td>
+        <td>
+            <button (click)="delete(employee.id)" class="btn btn-danger">Delete</button>
+        </td>
+    </tr>
+</tbody>
+    
+</table>
