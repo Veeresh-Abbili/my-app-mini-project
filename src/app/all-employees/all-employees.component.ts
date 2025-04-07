@@ -8,15 +8,15 @@ import { AllEmployeesService } from '../all-employees.service';
 })
 export class AllEmployeesComponent {
   term:string='';
-  allemployees:any=[];
+  employee:any=[];
   constructor(private _allEmployeesService:AllEmployeesService){
-    this.loadallemployees
+    this.loadallemployees()
   }
   loadallemployees(){
     this._allEmployeesService.getAllEmployees().subscribe(
       (data:any)=>{
         console.log(data);
-        this.allemployees=data;
+        this.employee=data;
       },(err:any)=>{
         alert("Internal Server Error")
       }
@@ -26,8 +26,8 @@ export class AllEmployeesComponent {
     this._allEmployeesService.getfilteredAllEmployees(this.term).subscribe(
       (data:any)=>{
         console.log(data);
-        this.allemployees=data;
-        console.log(this.allemployees);
+        this.employee=data;
+        console.log(this.employee);
       },(err:any)=>{
         alert("Internal Server Error")
       }
@@ -39,15 +39,15 @@ export class AllEmployeesComponent {
     this._allEmployeesService.getsortedAllEmployees(this.column,this.order).subscribe(
       (data:any)=>{
         console.log(data);
-        this.allemployees=data;
-        console.log(this.allemployees);
+        this.employee=data;
+        console.log(this.employee);
       },(err:any)=>{
         alert("Internal Server Error")
       }
     )
   }
-  limit:string='';
-  page:string='';
+  limit:string='8';
+  page:string='5';
   pagination(){
     this._allEmployeesService.getpaginatedAllEmployees(this.limit,this.page).subscribe(
       (data:any)=>{

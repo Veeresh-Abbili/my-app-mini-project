@@ -12,6 +12,7 @@ const routes: Routes = [
   {path:'mini-project',component:MiniProjectComponent,canActivate:[AuthenticationGuardGuard],children:[
     {path:'home', component:HomeComponent},
     {path:'create-employee',component:CreateEmployeeComponent},
+    {path:'create-employee/:id',component:CreateEmployeeComponent},
     {path:'all-employees',component:AllEmployeesComponent},
     {path:'employee-details/:id',component:EmployeeDetailsComponent},
 

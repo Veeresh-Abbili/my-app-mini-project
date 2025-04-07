@@ -1,64 +1,94 @@
-<h3>Update an Employee Record</h3>
+<div class="container"> 
+<h3 *ngIf="!id">Create an Employee Record</h3>
+<h3 *ngIf="id">Update an Employee Record</h3>
+
 <form [formGroup]="employeeForm">
-    <label>Name</label>
-    <input type="text" formControlName="name"><br>
-    <label>Company</label>
-    <input type="text" formControlName="company"><br>
-    <label>Role</label>
-    <input type="text" formControlName="role"><br>
-    <label>Package</label>
-    <input type="number" formControlName="package"><br>
-    <label>Email</label>
-    <input type="email" formControlName="email"><br>
-    <label>D O B</label>
-    <input type="month" formControlName="dob"><br><br>
- 
-    <label><ins>Address:</ins></label>
- <div formGroupName="Address">
-    <label>Line 1</label>
-    <input type="text" formControlName="addressLine"><br>
-    <label>City</label>
-    <input type="text" formControlName="city"><br>
-    <label>State</label>
-    <input type="text" formControlName="state"><br>
-    <label>Pincode</label>
-    <input type="number" formControlName="pincode">
- </div><br>
-    <label>Gender:</label>
-    <input type="radio" name="gender" formControlName="gender" value="Male">
-    <label>Male</label>
-    <input type="radio" name="gender" formControlName="gender" value="Female">
-    <label>Female</label><br>
-    
-    <label>WorkMode:</label>
-    <input type="radio" name="workMode" formControlName="workMode" value="WFH">
-    <label>WFH</label>
-    <input type="radio" name="workMode" formControlName="workMode"  value="WFO">
-    <label>WFO</label><br>
+  <!-- Name -->
+  <!-- <label>Name</label> -->
+  <input type="text" formControlName="name" placeholder="Name"><br>
 
-  <div *ngIf="employeeForm.get('workMode')?.value=='WFH'" >
+  <!-- Company -->
+  <!-- <label>Company</label> -->
+  <input type="text" formControlName="company" placeholder="Company"><br>
+
+  <!-- Role -->
+  <!-- <label>Role</label> -->
+  <input type="text" formControlName="role" placeholder="Role"><br>
+
+  <!-- Package -->
+  <!-- <label>Package</label> -->
+  <input type="number" formControlName="package" placeholder="Package"><br>
+
+  <!-- Email -->
+  <!-- <label>Email</label> -->
+  <input type="email" formControlName="email" placeholder="Email"><br>
+
+  <!-- Date of Birth -->
+  <label>D O B</label><br>
+  <input type="month" formControlName="dob"><br><br>
+
+  <!-- Address -->
+  <label><ins>Address:</ins></label>
+  <div formGroupName="address">
+    <!-- <label>Line 1</label> -->
+    <input type="text" formControlName="addressLine" placeholder="Line"><br>
+
+    <!-- <label>City</label> -->
+    <input type="text" formControlName="city" placeholder="City"><br>
+
+    <!-- <label>State</label> -->
+    <input type="text" formControlName="state" placeholder="State"><br>
+
+    <!-- <label>Pincode</label> -->
+    <input type="number" formControlName="pincode" placeholder="Pincode">
+  </div><br>
+
+  <!-- Gender -->
+  <label>Gender:</label>
+  <input type="radio" formControlName="gender" value="Male"> Male
+  <input type="radio" formControlName="gender" value="Female"> Female<br>
+
+  <!-- Work Mode -->
+  <label>WorkMode:</label>
+  <input type="radio" formControlName="workMode" value="WFH"> WFH
+  <input type="radio" formControlName="workMode" value="WFO"> WFO<br>
+
+  <!-- Conditional Fields for WFH and WFO -->
+  <div *ngIf="employeeForm.get('workMode')?.value === 'WFH'">
     <label>wifibill</label>
-    <input type="number" formControlName="WFH">
+    <input type="number" formControlName="wifibill">
   </div>
-  <div *ngIf="employeeForm.get('workMode')?.value=='WFO'">
+
+  <div *ngIf="employeeForm.get('workMode')?.value === 'WFO'">
     <label>travelfee</label>
-    <input type="number" formControlName="WFO">
+    <input type="number" formControlName="travelfee">
   </div>
 
-  <label>Hikes</label>
- <button (click)="addhike()" class="btn btn-warning">Add Hike</button>
-<div formArrayName="hikes">
-<div *ngFor="let hike of HikesFormArray.controls;let i=index">
-<div formGroupName="{{i}}">
-    <h2>Hike{{i+1}}</h2>
-   <label>Year</label>
-   <input type="number" formControlName="year"><br>
-   <label>Hike(%)</label>
-   <input type="number" formControlName="hike(%)"><br>
-   <button (click)="deletehike(i)" class="btn btn-danger">Remove Hike</button>
-</div>
-</div>
-</div>
-<button (click)="submit()">Submit</button><br>
+  <!-- Hikes Section -->
+  <!-- <label>Hikes:</label> -->
+  <button type="button" (click)="addHike()" class="btn btn-warning">Add Hike</button>
 
+  <div formArrayName="Hikes">
+    <div *ngFor="let hike of HikesFormArray.controls; let i = index">
+      <div [formGroupName]="i">
+        <h2>Hike {{ i + 1 }}</h2>
+        <!-- <label>Year</label> -->
+        <input type="number" formControlName="year" placeholder="Year"><br>
+
+        <!-- <label>Hike(%)</label> -->
+        <input type="number" formControlName="Hike" placeholder="Hike%"><br>
+
+        <button type="button" (click)="deleteHike(i)" class="btn btn-danger">Remove Hike</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Submit Button -->
+  <!-- <button type="submit" (click)="submit()" class="btn btn-primary">Submit</button><br><br> -->
+
+  <!-- Create/Update Button -->
+  <button type="button" (click)="CreateEmployee()" class="btn btn-info">
+    {{ id ? 'Update Employee' : 'Create Employee' }}
+  </button>
 </form>
+</div>

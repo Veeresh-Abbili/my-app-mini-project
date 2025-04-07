@@ -1,0 +1,30 @@
+.container{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    overflow: hidden;
+}
+.search{
+    width: 100px;
+    height: 30px;
+    gap: 10px;
+}
+.sort{
+    width: 280px;
+    height: 30px;
+    /* gap: 10px; */
+}
+.pagination{
+    width: 100px;
+    height: 30px;
+    gap: 10px;
+
+}
+.table{
+    width: 100%;
+    height: 80%;
+
+}
