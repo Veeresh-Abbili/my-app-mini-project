@@ -1,9 +1,11 @@
-<div>
+<div class="loginForm">
+    <h4>Welcome</h4>
+    <h5>Please Login to Continue</h5><br><br>
 <form [formGroup]="loginForm"> 
-    <label>Email:</label>
-    <input type="email" formControlName="email" ><br><br>
-    <label>Password:</label>
-    <input type="password" formControlName="password"><br><br>
+    <!-- <label>Email:</label> -->
+    <input type="email" formControlName="email" placeholder="Enter Email"><br><br>
+    <!-- <label>Password:</label> -->
+    <input type="password" formControlName="password" placeholder="Enter Password"><br><br><br>
     <button class="btn btn-primary" (click)="login()">Login</button>
 </form>
 </div>

@@ -10,11 +10,12 @@ export class AuthenticationGuardGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if(sessionStorage.getItem('token')){
+    
+      if(sessionStorage.getItem('token')){
       return true;
     }else{
       alert("Need to login for accessing this page");
-      this._router.navigateByUrl('');
+      this._router.navigateByUrl('/login');
       return false
     }
      

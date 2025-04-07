@@ -9,7 +9,7 @@ import { AllEmployeesService } from '../all-employees.service';
 })
 export class EmployeeDetailsComponent {
   id:any='0';
-  allEmployee:any='';
+  Employee:any='';
   constructor(private _activateRoute:ActivatedRoute,private _allEmployeesService:AllEmployeesService){
     _activateRoute.params.subscribe(
       (data:any)=>{
@@ -23,7 +23,7 @@ export class EmployeeDetailsComponent {
     _allEmployeesService.getAllEmployee(this.id).subscribe(
       (data:any)=>{
         console.log(data);
-        this.allEmployee=data;
+        this.Employee=data;
       },(err:any)=>{
         alert("Internal Server Error");
       }
