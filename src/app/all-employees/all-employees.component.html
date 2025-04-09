@@ -66,12 +66,12 @@
         <tbody>
             <tr *ngFor="let employee of employee; let i=index">
              <td>{{i+1}}</td>
-             <td>{{employee.name}}</td>
+             <td>{{employee.name | uppercase}}</td>
              <td>{{employee.gender}}</td>
              <td>{{employee.company}}</td>
              <td>{{employee.id}}</td>
              <td>{{employee.role}}</td>
-             <td>{{employee.package}}</td>
+             <td>{{employee.package | balance}}</td>
              <td>{{employee.email}}</td>
              <td>{{employee.dob}}</td>
              <td>{{employee.address}}</td>

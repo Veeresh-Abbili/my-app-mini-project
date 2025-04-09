@@ -46,13 +46,13 @@ export class AllEmployeesComponent {
       }
     )
   }
-  limit:string='8';
-  page:string='5';
+  limit:string='';
+  page:string='';
   pagination(){
     this._allEmployeesService.getpaginatedAllEmployees(this.limit,this.page).subscribe(
       (data:any)=>{
         console.log(data);
-        // this.allemployees=data;
+        this.employee=data;
         // console.log(this.allemployees);
       },(err:any)=>{
         alert("Internal Server Error")

@@ -11,6 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { CreateEmployeeComponent } from './create-employee/create-employee.component';
 import { AllEmployeesComponent } from './all-employees/all-employees.component';
 import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
+import { BalancePipe } from './balance.pipe';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { EmployeeDetailsComponent } from './employee-details/employee-details.co
     CreateEmployeeComponent,
     AllEmployeesComponent,
     EmployeeDetailsComponent,
+    BalancePipe,
   ],
   imports: [
     BrowserModule,
