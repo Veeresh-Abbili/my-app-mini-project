@@ -5,7 +5,7 @@
 <form [formGroup]="employeeForm">
   <!-- Name -->
   <!-- <label>Name</label> -->
-  <input type="text" formControlName="name" placeholder="Name"><br>
+  <input type="text" formControlName="name" placeholder="name"><br>
 
   <!-- Company -->
   <!-- <label>Company</label> -->
@@ -68,7 +68,7 @@
   <!-- <label>Hikes:</label> -->
   <button type="button" (click)="addHike()" class="btn btn-warning">Add Hike</button>
 
-  <div formArrayName="Hikes">
+  <div formArrayName="hikes">
     <div *ngFor="let hike of HikesFormArray.controls; let i = index">
       <div [formGroupName]="i">
         <h2>Hike {{ i + 1 }}</h2>

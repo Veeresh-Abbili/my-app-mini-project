@@ -6,7 +6,7 @@
     <div class="sort">
       <select [(ngModel)]="column">
         <option>S No</option>
-        <option>Name</option>
+        <option>name</option>
          <option>gender</option>
          <option>company</option>
          <option>id</option>
@@ -47,7 +47,7 @@
         <table class="table table-dark" border="1" [cellSpacing]="0" [cellPadding]="10">
           <thead>
              <tr><th>S No</th>
-              <th>Name</th>
+              <th>name</th>
               <th>gender</th>
               <th>company</th>
               <th>id</th>
@@ -71,9 +71,9 @@
              <td>{{employee.company}}</td>
              <td>{{employee.id}}</td>
              <td>{{employee.role}}</td>
-             <td>{{employee.package | balance}}</td>
+             <td [ngStyle]="{color:employee.package<900000?'red':'green'}">{{employee.package | balance}}</td>
              <td>{{employee.email}}</td>
-             <td>{{employee.dob}}</td>
+             <td>{{employee.dob | date:'dd-MM-yyyy'}}</td>
              <td>{{employee.address}}</td>
              <td>{{employee.hikes}}</td>
              <td>{{employee.workMode}}</td>
