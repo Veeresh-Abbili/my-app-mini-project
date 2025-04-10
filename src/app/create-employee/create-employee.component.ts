@@ -10,7 +10,7 @@ import { AllEmployeesService } from '../all-employees.service';
 })
 export class CreateEmployeeComponent {
   public employeeForm: FormGroup = new FormGroup({
-    Name: new FormControl('', Validators.required),
+    name: new FormControl('', Validators.required),
     company: new FormControl('', Validators.required),
     role: new FormControl('', Validators.required),
     package: new FormControl('', Validators.required),
@@ -24,11 +24,11 @@ export class CreateEmployeeComponent {
     }),
     gender: new FormControl('', Validators.required),
     workMode: new FormControl(''),
-    Hikes: new FormArray([]),
+    hikes: new FormArray([]),
   });
 
   get HikesFormArray() {
-    return this.employeeForm.get('Hikes') as FormArray;
+    return this.employeeForm.get('hikes') as FormArray;
   }
 
   id: number = 0;
